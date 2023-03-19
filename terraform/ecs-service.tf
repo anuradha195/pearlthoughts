@@ -1,9 +1,9 @@
 resource "aws_ecs_service" "ecs_service" {
-	name            = "ecs-service"                             # Naming our first service
-	cluster         = "${aws_ecs_cluster.pt_cluster.id}"             # Referencing our created Cluster
-	task_definition = "${aws_ecs_task_definition.ecs_task.arn}" # Referencing the task our service will spin up
+	name            = "ecs-service"
+	cluster         = "${aws_ecs_cluster.pt_cluster.id}"
+	task_definition = "${aws_ecs_task_definition.ecs_task.arn}"
 	launch_type     = "FARGATE"
-	#desired_count   = 1  #Setting the number of containers we want deployed to 1
+	desired_count   = 1
 	
 	load_balancer {
 		target_group_arn = "${aws_lb_target_group.target_group.arn}" # Referencing our target group
